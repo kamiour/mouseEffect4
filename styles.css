@@ -1,0 +1,66 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  overflow: hidden;
+  margin: 0;
+}
+
+img {
+  width: 70px;
+  height: 70px;
+}
+
+#one {
+  height: 100vh;
+  width: 100vw;
+  background: black;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#output {
+  color: red;
+}
+
+.move {
+  position: absolute;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+svg {
+  visibility: hidden;
+}
+
+.btn {
+  position: absolute;
+  text-align: center;
+  padding: 6px 0;
+  width: 160px;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  z-index: 3;
+}
+
+#btn1 {
+  top: 30px;
+  left: 30px;
+}
+
+#btn2 {
+  top: 66px;
+  left: 30px;
+}
+
+#btn3 {
+  top: 102px;
+  left: 30px;
+}
