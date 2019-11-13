@@ -1,16 +1,15 @@
-let number = 500;
-let diameter = 4;
+let number = 294;
+let diameter = 3;
 let initialLeft = [];
 let initialTop = [];
 let points = [];
-let counter = 0;
 for (let i = 0; i < number; i++) {
   $("#one").append( '<div id="move-'+i+'" class="move"></div>');
 }
 
 let elementsArr = $(".move");
 for (let i = 0; i < elementsArr.length; i++) {
-  elementsArr[i].style.transitionDuration = '1s';
+  elementsArr[i].style.transitionDuration = '1.5s';
   elementsArr[i].style.left = (window.innerWidth * Math.random());
   elementsArr[i].style.top = (window.innerHeight * Math.random());
   elementsArr[i].style.width = diameter;
@@ -20,21 +19,21 @@ for (let i = 0; i < elementsArr.length; i++) {
   initialTop[i] = elementsArr[i].style.top;
 };
     
-$('img').click(async function() {
+$('.btn').hover(function() {
+    let index = this.id;
+    console.log(index);
     points = [];
-    if(!this.canvas) {
-        this.canvas = $('<canvas />')[0];
-        this.canvas.width = this.width;
-        this.canvas.height = this.height;
-        this.canvas.getContext('2d').drawImage(this, 0, 0, this.width, this.height);
+    let img = $('img')[index];
+    if(!img.canvas) {
+        img.canvas = $('<canvas />')[0];
+        img.canvas.width = img.width;
+        img.canvas.height = img.height;
+        img.canvas.getContext('2d').drawImage(img, 0, 0, img.width, img.height);
     }
 
-    let startLeft = this.offsetLeft;
-    let startTop = this.offsetTop;
-
-    for (let i = 0; i<this.width; i+=diameter+1) {
-      for (let j = 0; j<this.height; j+=diameter+1) {
-        var pixelData = this.canvas.getContext('2d').getImageData(i, j, 1, 1).data;
+    for (let i = 0; i<img.width; i++) {
+      for (let j = 0; j<img.height; j++) {
+        var pixelData = img.canvas.getContext('2d').getImageData(i, j, 1, 1).data;
         if (pixelData[0] !== 255 && pixelData[1] == !255 && pixelData[2] == !255) {
           points[points.length] = {
             x: i,
@@ -44,19 +43,15 @@ $('img').click(async function() {
       }
     }
 
+    for (let p = 0; p < points.length; p++) {
+      elementsArr[p].style.left = (points[p].x)*5 + window.innerWidth/2 - 50;
+      elementsArr[p].style.top = (points[p].y)*5;
+    }
+});
+
+$('.btn').mouseout(function() {
     for (let p = 0; p < elementsArr.length; p++) {
         elementsArr[p].style.left = initialLeft[p];
         elementsArr[p].style.top = initialTop[p];
     }
-
-    if (counter > 0) {
-        await new Promise((resolve, reject) => setTimeout(resolve, 1000));
-        console.log(counter);
-    }
-
-    for (let p = 0; p < points.length; p++) {
-      elementsArr[p].style.left = points[p].x + startLeft - diameter/2;
-      elementsArr[p].style.top = points[p].y + startTop - diameter/2;
-    }
-    counter++;
 });

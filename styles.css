@@ -9,9 +9,9 @@ body {
 }
 
 img {
-  width: 120px;
-  height: 120px;
-    opacity: 0.1;
+  width: 25px;
+  height: 25px;
+  visibility: hidden;
 }
 
 #one {
@@ -19,9 +19,8 @@ img {
   width: 100vw;
   background: black;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
 #output {
@@ -32,36 +31,27 @@ img {
   position: absolute;
   z-index: 2;
   border-radius: 50%;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);;
 }
 
-svg {
-  visibility: hidden;
+.button-panel {
+  display: flex;
+  flex-direction: column;
 }
 
 .btn {
-  position: absolute;
-  text-align: center;
-  padding: 6px 0;
-  width: 160px;
+  padding: 6px 30px;
+  text-align: left;
+  width: 100px;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 8px;
   color: white;
   text-decoration: none;
-  z-index: 3;
+  transition-duration: 0.3s;
+  margin-bottom: 10px;
 }
 
-#btn1 {
-  top: 30px;
-  left: 30px;
-}
-
-#btn2 {
-  top: 66px;
-  left: 30px;
-}
-
-#btn3 {
-  top: 102px;
-  left: 30px;
+.btn:hover {
+  width: 120px;
 }
