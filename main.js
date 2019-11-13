@@ -1,4 +1,4 @@
-let number = 400;
+let number = 300;
 let diameter = 3;
 let initialLeft = [];
 let initialTop = [];
@@ -19,7 +19,6 @@ for (let i = 0; i < elementsArr.length; i++) {
     
 $('.btn').mouseenter(function() {
     let index = this.id;
-    console.log(index);
     points = [];
     let img = $('img')[index];
     if(!img.canvas) {
@@ -40,6 +39,7 @@ $('.btn').mouseenter(function() {
         }
       }
     }
+    console.log(points.length);
 
     for (let p = 0; p < points.length; p++) {
       elementsArr[p].style.left = (points[p].x)*7 + window.innerWidth/2 - 87.5;
