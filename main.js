@@ -1,4 +1,4 @@
-let number = 294;
+let number = 500;
 let diameter = 3;
 let initialLeft = [];
 let initialTop = [];
@@ -17,7 +17,7 @@ for (let i = 0; i < elementsArr.length; i++) {
   initialTop[i] = elementsArr[i].style.top;
 };
     
-$('.btn').hover(function() {
+$('.btn').mouseenter(function() {
     let index = this.id;
     console.log(index);
     points = [];
