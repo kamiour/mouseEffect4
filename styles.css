@@ -44,7 +44,7 @@ img {
 .btn {
   padding: 6px 30px;
   text-align: left;
-  width: 100px;
+  width: 120px;
   background-color: transparent;
   border: 1px solid white;
   border-radius: 8px;
@@ -55,5 +55,5 @@ img {
 }
 
 .btn:hover {
-  width: 120px;
+  width: 150px;
 }
