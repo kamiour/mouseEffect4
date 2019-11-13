@@ -23,18 +23,6 @@ img {
   padding-top: 20px;
 }
 
-.circle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 1px solid #fffc00;
-  opacity: 0.5;
-}
-
 #output {
   color: red;
 }
