@@ -9,12 +9,10 @@ for (let i = 0; i < number; i++) {
 
 let elementsArr = $(".move");
 for (let i = 0; i < elementsArr.length; i++) {
-  elementsArr[i].style.transitionDuration = '1.5s';
   elementsArr[i].style.left = (window.innerWidth * Math.random());
   elementsArr[i].style.top = (window.innerHeight * Math.random());
   elementsArr[i].style.width = diameter;
   elementsArr[i].style.height = diameter;
-  elementsArr[i].style.backgroundColor = '#fffc00';
   initialLeft[i] = elementsArr[i].style.left;
   initialTop[i] = elementsArr[i].style.top;
 };
