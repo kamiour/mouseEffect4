@@ -1,4 +1,4 @@
-let number = 500;
+let number = 400;
 let diameter = 3;
 let initialLeft = [];
 let initialTop = [];
@@ -42,13 +42,13 @@ $('.btn').mouseenter(function() {
     }
 
     for (let p = 0; p < points.length; p++) {
-      elementsArr[p].style.left = (points[p].x)*6 + window.innerWidth/2 - 75;
-      elementsArr[p].style.top = (points[p].y)*6 + window.innerHeight/2 - 75;
+      elementsArr[p].style.left = (points[p].x)*7 + window.innerWidth/2 - 87.5;
+      elementsArr[p].style.top = (points[p].y)*7 + window.innerHeight/2 - 87.5;
     }
 });
 
 $('.btn').mouseout(function() {
-    for (let p = 0; p < elementsArr.length; p++) {
+    for (let p = 0; p < points.length; p++) {
         elementsArr[p].style.left = initialLeft[p];
         elementsArr[p].style.top = initialTop[p];
     }
