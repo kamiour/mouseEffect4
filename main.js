@@ -1,8 +1,10 @@
 let number = 300;
-let diameter = 3;
+let diameter = 8;
+let scale = 15;
 let initialLeft = [];
 let initialTop = [];
 let points = [];
+let newPoints = [];
 for (let i = 0; i < number; i++) {
   $("#one").append( '<div id="move-'+i+'" class="move"></div>');
 }
@@ -40,15 +42,22 @@ $('.btn').mouseenter(function() {
       }
     }
     console.log(points.length);
+    let norm = points.length/number;
+    console.log(norm);
 
-    for (let p = 0; p < points.length; p++) {
-      elementsArr[p].style.left = (points[p].x)*7 + window.innerWidth/2 - 87.5;
-      elementsArr[p].style.top = (points[p].y)*7 + window.innerHeight/2 - 87.5;
+    for (let i = 0; i<number; i++) {
+        newPoints[i] = points[Math.floor(i*norm)]
+    }
+    console.log(newPoints);
+
+    for (let p = 0; p < newPoints.length; p++) {
+      elementsArr[p].style.left = (newPoints[p].x)*scale + window.innerWidth/2 - 0.5*scale*25;
+      elementsArr[p].style.top = (newPoints[p].y)*scale + window.innerHeight/2 - 0.5*scale*25;
     }
 });
 
 $('.btn').mouseout(function() {
-    for (let p = 0; p < points.length; p++) {
+    for (let p = 0; p < newPoints.length; p++) {
         elementsArr[p].style.left = initialLeft[p];
         elementsArr[p].style.top = initialTop[p];
     }
