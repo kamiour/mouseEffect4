@@ -1,4 +1,4 @@
-let number = 200;
+let number = 500;
 let diameter = 4;
 let initialLeft = [];
 let initialTop = [];
@@ -10,7 +10,7 @@ for (let i = 0; i < number; i++) {
 
 let elementsArr = $(".move");
 for (let i = 0; i < elementsArr.length; i++) {
-  elementsArr[i].style.transitionDuration = '1.5s';
+  elementsArr[i].style.transitionDuration = '1s';
   elementsArr[i].style.left = (window.innerWidth * Math.random());
   elementsArr[i].style.top = (window.innerHeight * Math.random());
   elementsArr[i].style.width = diameter;
@@ -20,9 +20,8 @@ for (let i = 0; i < elementsArr.length; i++) {
   initialTop[i] = elementsArr[i].style.top;
 };
     
-$('img').click(function() {
+$('img').click(async function() {
     points = [];
-    counter = 0;
     if(!this.canvas) {
         this.canvas = $('<canvas />')[0];
         this.canvas.width = this.width;
@@ -30,21 +29,11 @@ $('img').click(function() {
         this.canvas.getContext('2d').drawImage(this, 0, 0, this.width, this.height);
     }
 
-    let startLeft = $('img')[0].offsetLeft;
-    let startTop = $('img')[0].offsetTop;
+    let startLeft = this.offsetLeft;
+    let startTop = this.offsetTop;
 
-    for (let i = 0; i<this.width; i+=diameter) {
-        for (let j = 0; j<this.height; j+=diameter) {
-            var pixelData = this.canvas.getContext('2d').getImageData(i, j, 1, 1).data;
-            if (pixelData[0] !== 255 && pixelData[1] == !255 && pixelData[2] == !255) {
-                counter++;
-            }
-        }
-    }
-    console.log(counter);
-
-    for (let i = 0; i<this.width; i+=diameter) {
-      for (let j = 0; j<this.height; j+=diameter) {
+    for (let i = 0; i<this.width; i+=diameter+1) {
+      for (let j = 0; j<this.height; j+=diameter+1) {
         var pixelData = this.canvas.getContext('2d').getImageData(i, j, 1, 1).data;
         if (pixelData[0] !== 255 && pixelData[1] == !255 && pixelData[2] == !255) {
           points[points.length] = {
@@ -54,10 +43,20 @@ $('img').click(function() {
         }
       }
     }
-    console.log(points.length);
+
+    for (let p = 0; p < elementsArr.length; p++) {
+        elementsArr[p].style.left = initialLeft[p];
+        elementsArr[p].style.top = initialTop[p];
+    }
+
+    if (counter > 0) {
+        await new Promise((resolve, reject) => setTimeout(resolve, 1000));
+        console.log(counter);
+    }
 
     for (let p = 0; p < points.length; p++) {
       elementsArr[p].style.left = points[p].x + startLeft - diameter/2;
       elementsArr[p].style.top = points[p].y + startTop - diameter/2;
     }
+    counter++;
 });

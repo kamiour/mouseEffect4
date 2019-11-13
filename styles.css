@@ -9,8 +9,9 @@ body {
 }
 
 img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
+    opacity: 0.1;
 }
 
 #one {
