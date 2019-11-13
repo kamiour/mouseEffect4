@@ -44,8 +44,8 @@ $('.btn').hover(function() {
     }
 
     for (let p = 0; p < points.length; p++) {
-      elementsArr[p].style.left = (points[p].x)*5 + window.innerWidth/2 - 50;
-      elementsArr[p].style.top = (points[p].y)*5;
+      elementsArr[p].style.left = (points[p].x)*6 + window.innerWidth/2 - 50;
+      elementsArr[p].style.top = (points[p].y)*6 + window.innerHeight/2 - 50;
     }
 });
 
